@@ -1,0 +1,11 @@
+{
+  "name": "s-tags",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "spotify-web-api-node": "^5.0.0"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5"
+  }
+}
