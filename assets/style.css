@@ -7,7 +7,7 @@
 
 
 html { 
-    background: url("back.jpg") no-repeat center center fixed;
+    background: url("/assets/back.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -20,8 +20,8 @@ html {
   width: 100%;
   left: 0;
   top: 0;
-  overflow: hidden;
   position: fixed;
+  overflow: auto;
 }
 
 .logo-cont{
@@ -96,4 +96,35 @@ html {
   .ir{
     width: 300px;
   }
+}
+
+.small-button{
+  width: 300px;
+  font-size: 24px;
+}
+
+.input-group{
+  padding: 20px 20px 20px 20px;
+}
+
+#playlist img{
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#playlist div{
+  text-align: center;
+}
+
+#playlist{
+  margin-top: 20px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 20px 20px 20px 20px;
+  color: white;
 }
