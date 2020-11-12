@@ -1,0 +1,130 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'MuseoModerno', cursive;
+}
+
+
+html { 
+    background: url("/assets/back.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.content {
+  background: linear-gradient(rgba(199, 255, 194, 0.6), rgba(36, 216, 21, 0.6),rgba(0, 67, 11, 1)) no-repeat center center fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  overflow: auto;
+}
+
+.logo-cont{
+  width: 100%;
+  height: 35%;
+}
+
+.ir{
+  width: 400px;
+  margin-top: 100px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.text-cont{
+  margin-left: auto;
+  width: 80%;
+  margin-right: auto;
+}
+.frase{
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.button-cont{
+  text-align: center;
+  margin-top: 50px;
+
+}
+.login{
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 32px;
+  width: 450px;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.login:hover{
+  color: rgb(199, 255, 194);
+}
+
+@media screen and (max-width: 800px){
+  .ir{
+    margin-top: 50px;
+  }
+
+  .text-cont{
+    margin-top: 50px;
+    width: 80%;
+  }
+
+  .frase{
+    font-size: 32px;
+  }
+
+  .login{
+    width: 300px;
+    font-size: 24px;
+  }
+
+  .button-cont{
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 1400px){
+  .ir{
+    width: 300px;
+  }
+}
+
+.small-button{
+  width: 300px;
+  font-size: 24px;
+}
+
+.input-group{
+  padding: 20px 20px 20px 20px;
+}
+
+#playlist img{
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#playlist div{
+  text-align: center;
+}
+
+#playlist{
+  margin-top: 20px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 20px 20px 20px 20px;
+  color: white;
+}
