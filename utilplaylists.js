@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 let songMap = {}
 
+let globTags = "";
+let globSongs = [];
+
 function getSongsFromPlaylistID(id, sum) {
     return axios.get('http://localhost:3000/getSongsFromPlaylist/' + id)
         .then(res => {
@@ -49,6 +52,7 @@ function sendTags() {
     const input = document.getElementById("input-tags")
     let tags = input.value.split(', ')
     console.log(tags)
+    globTags = tags;
 
     // Just one tag
     for(let i = 0; i < tags.length; i ++)
@@ -72,6 +76,7 @@ function sendTags() {
 
 function addSongsToPlaylist(ids) {
     erasePlaylist();
+    globSongs = [];
     return axios.get('http://localhost:3000/getSongs/' + ids)
         .then(res => {
             let songs = res.data.tracks;
@@ -79,8 +84,19 @@ function addSongsToPlaylist(ids) {
             for(let i = 0; i < songs.length; i ++) {
                 let song = songs[i];
                 displaySong(song)
+                globSongs.push('spotify:track:' + song.id)
                 // console.log(song.name + " by " + song.artists[0].name)
             }
+        }).catch(e => {
+            console.log(e);
+        });
+}
+
+function createPlaylist() {
+    // console.log(globSongs)
+    return axios.post('http://localhost:3000/createPlaylist/', {tags: globTags, songs: globSongs})
+        .then(res => {
+            console.log(res)
         }).catch(e => {
             console.log(e);
         });
@@ -96,15 +112,17 @@ function generatePlaylist() {
         return b[1] - a[1];
     });
 
-    // Top 25 songs
+    // Top 50 songs
     let ids = "";
-    for(let i = 0; i < Math.min(25, sortable.length); i ++) {
+    for(let i = 0; i < Math.min(50, sortable.length); i ++) {
         if(ids != '') {
             ids += ',';
         }
         ids += sortable[i][0];
     }
-    addSongsToPlaylist(ids);
+    addSongsToPlaylist(ids).then(() => {
+        createPlaylist();
+    })
 }
 
 
