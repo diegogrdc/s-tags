@@ -6,7 +6,7 @@
 }
 
 
-html { 
+body { 
     background: url("back.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -20,8 +20,8 @@ html {
   width: 100%;
   left: 0;
   top: 0;
-  position: fixed;
   overflow: auto;
+  min-height: 100vh;
 }
 
 .logo-cont{

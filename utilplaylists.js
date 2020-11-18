@@ -145,14 +145,18 @@ function displaySong(song) {
     let img = document.createElement("img");
     let audio = document.createElement("audio");
 
+    //add song class to div
+    outerdiv.className = "song";
+
     let name = song.name;
     let artist = song.artists[0].name;
     let album = song.album.name;
     let text = 'Song: ' + name + '\nArtist: ' + artist + '\nAlbum: ' + album + '\n';
     let textNode = document.createTextNode(text);
-
     let audiosrc = song.preview_url;
+
     audio.setAttribute("type", "audio/mpeg");
+    outerdiv.setAttribute('data-aos', 'fade-down');
     audio.controls = true;
     if(audiosrc != null) {
         audio.setAttribute("src", audiosrc)
