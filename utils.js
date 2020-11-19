@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function login() {
-    return axios.get('http://localhost:3000/login/')
+    return axios.get('/login/')
         .then(res => {
+            console.log(res.data)
             window.open(res.data);
-            window.location.replace("http://localhost:63342/s-tags/playlists.html");
+            window.location.href = "/playlists.html";
         })
 }

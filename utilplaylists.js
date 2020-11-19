@@ -15,7 +15,7 @@ let globTags = "";
 let globSongs = [];
 
 function getSongsFromPlaylistID(id, sum) {
-    return axios.get('http://localhost:3000/getSongsFromPlaylist/' + id)
+    return axios.get('/getSongsFromPlaylist/' + id)
         .then(res => {
             let songs = res.data;
             for(let i = 0; i < songs.length; i ++) {
@@ -35,7 +35,7 @@ function getSongsFromPlaylistID(id, sum) {
 }
 
 function getPlaylistsWithTag(tag, sum) {
-    return axios.get('http://localhost:3000/getPlaylists/' + tag)
+    return axios.get('/getPlaylists/' + tag)
         .then(res => {
             let playlists = res.data;
             for(let i = 0; i < playlists.length; i ++) {
@@ -77,7 +77,7 @@ function sendTags() {
 function addSongsToPlaylist(ids) {
     erasePlaylist();
     globSongs = [];
-    return axios.get('http://localhost:3000/getSongs/' + ids)
+    return axios.get('/getSongs/' + ids)
         .then(res => {
             let songs = res.data.tracks;
             // console.log(songs)
@@ -94,7 +94,7 @@ function addSongsToPlaylist(ids) {
 
 function createPlaylist() {
     // console.log(globSongs)
-    return axios.post('http://localhost:3000/createPlaylist/', {tags: globTags, songs: globSongs})
+    return axios.post('/createPlaylist/', {tags: globTags, songs: globSongs})
         .then(res => {
             console.log(res)
         }).catch(e => {

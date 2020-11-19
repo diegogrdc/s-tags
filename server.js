@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
+const path = require('path');
 const cors = require('cors');
 app.use(cors());
-console.log("top11")
 const SpotifyWebApi = require('spotify-web-api-node');
 
 //Here we are configuring express to use body-parser as middle-ware.
@@ -139,4 +139,12 @@ app.post('/createPlaylist', (req, res) => {
         });
 })
 
-app.listen(3000);
+
+app.use(express.static(path.join(__dirname, './')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './', 'index.html'));
+});
+
+
+app.listen(process.env.PORT||3000);
