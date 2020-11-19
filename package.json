@@ -5,6 +5,9 @@
     "express": "^4.17.1",
     "spotify-web-api-node": "^5.0.0"
   },
+  "scripts": {
+    "start": "node server.js"
+  },
   "devDependencies": {
     "cors": "^2.8.5"
   }
