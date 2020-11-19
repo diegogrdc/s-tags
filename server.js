@@ -16,27 +16,7 @@ let clientId = 'ddb39440cc3043ba97df2dd4fb0fb542',
     clientSecret = '897084865b974e07a2e5240005c94787',
     redirectUri = 'https://s-tags.herokuapp.com/callback';
 
-const scopes = [
-    'ugc-image-upload',
-    'user-read-playback-state',
-    'user-modify-playback-state',
-    'user-read-currently-playing',
-    'streaming',
-    'app-remote-control',
-    'user-read-email',
-    'user-read-private',
-    'playlist-read-collaborative',
-    'playlist-modify-public',
-    'playlist-read-private',
-    'playlist-modify-private',
-    'user-library-modify',
-    'user-library-read',
-    'user-top-read',
-    'user-read-playback-position',
-    'user-read-recently-played',
-    'user-follow-read',
-    'user-follow-modify'
-];
+let scopes = ['user-read-private', 'user-read-email', 'playlist-modify'];
 
 let state = 'choice';
 let showDialog = true;
@@ -55,6 +35,7 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/callback', (req, res) => {
+    spotifyApi.resetAccessToken();
     const error = req.query.error;
     const code = req.query.code;
     const state = req.query.state;
