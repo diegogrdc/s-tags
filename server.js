@@ -30,13 +30,13 @@ let spotifyApi = new SpotifyWebApi({
 });
 
 app.get('/login', function(req, res) {
+    spotifyApi.resetAccessToken();
+    spotifyApi.resetRefreshToken();
     res.send(spotifyApi.createAuthorizeURL(
         scopes));
 });
 
 app.get('/callback', (req, res) => {
-    spotifyApi.resetAccessToken();
-    spotifyApi.resetRefreshToken();
     const error = req.query.error;
     const code = req.query.code;
     const state = req.query.state;
