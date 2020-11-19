@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const cors = require('cors');
 app.use(cors());
+console.log("top11")
 const SpotifyWebApi = require('spotify-web-api-node');
 
 //Here we are configuring express to use body-parser as middle-ware.
