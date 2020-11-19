@@ -49,7 +49,8 @@ app.get('/callback', (req, res) => {
 
     console.log(code)
     spotifyApi.setAccessToken(code);
-    return;
+    res.send('Success! You can now close the window.');
+    /*
 
     spotifyApi
         .authorizationCodeGrant(code)
@@ -69,7 +70,7 @@ app.get('/callback', (req, res) => {
         .catch(error => {
             console.error('Error getting Tokens:', error);
             res.send(`Error getting Tokens: ${error}`);
-        });
+        }); */
 });
 
 app.get('/getPlaylists/:tag', (req, res) => {
