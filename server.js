@@ -46,6 +46,11 @@ app.get('/callback', (req, res) => {
         return;
     }
 
+
+    console.log(code)
+    spotifyApi.setAccessToken(code);
+    return;
+
     spotifyApi
         .authorizationCodeGrant(code)
         .then(data => {
