@@ -22,7 +22,7 @@ let state = 'some-state-of-my-choice';
 // Create the api object with the credentials
 let spotifyApi = new SpotifyWebApi({
     clientId: clientId,
-    clientSecret: clientSecret,
+    //clientSecret: clientSecret,
     redirectUri: redirectUri,
 });
 
