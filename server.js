@@ -24,12 +24,13 @@ let responseType = 'token';
 // Create the api object with the credentials
 let spotifyApi = new SpotifyWebApi({
     clientId: clientId,
-    //clientSecret: clientSecret,
+    clientSecret: clientSecret,
     redirectUri: redirectUri,
 });
 
 app.get('/login', function(req, res) {
-    res.send(spotifyApi.createAuthorizeURL(scopes,
+    res.send(spotifyApi.createAuthorizeURL(
+        scopes,
         state,
         showDialog,
         responseType));
