@@ -33,7 +33,9 @@ app.get('/login', function(req, res) {
     spotifyApi.resetAccessToken();
     spotifyApi.resetRefreshToken();
     res.send(spotifyApi.createAuthorizeURL(
-        scopes));
+        scopes,
+        state,
+        showDialog=true));
 });
 
 app.get('/callback', (req, res) => {
