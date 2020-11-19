@@ -30,7 +30,10 @@ let spotifyApi = new SpotifyWebApi({
 
 app.get('/login', function(req, res) {
     res.send(spotifyApi.createAuthorizeURL(
-        scopes));
+        scopes,
+        state,
+        showDialog,
+        responseType));
 });
 
 app.get('/callback', (req, res) => {
@@ -39,6 +42,7 @@ app.get('/callback', (req, res) => {
     const error = req.query.error;
     const code = req.query.code;
     const state = req.query.state;
+
 
     if (error) {
         console.error('Callback Error:', error);
