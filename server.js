@@ -36,7 +36,8 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/callback', (req, res) => {
-    console.log(res)
+    console.log("response query")
+    console.log(req.query);
     const error = req.query.error;
     const code = req.query.code;
     const state = req.query.state;
