@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 let clientId = 'ddb39440cc3043ba97df2dd4fb0fb542',
     clientSecret = '897084865b974e07a2e5240005c94787',
-    redirectUri = 'http://localhost:3000/callback';
+    redirectUri = 'https://s-tags.herokuapp.com/callback';
 
 let scopes = ['user-read-private', 'user-read-email', 'playlist-modify'];
 let state = 'some-state-of-my-choice';
