@@ -39,7 +39,7 @@ app.get('/login', function(req, res) {
 app.get('/callback', (req, res) => {
     // console.log(req);
     console.log("response query")
-    console.log("window.location.href")
+    console.log(window.location.href)
     console.log(req.query);
     const error = req.query.error;
     const code = req.query.code;
