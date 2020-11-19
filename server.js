@@ -47,6 +47,7 @@ app.get('/callback', (req, res) => {
     }
 
 
+    console.log("code is");
     console.log(code)
     spotifyApi.setAccessToken(code);
     res.send('Success! You can now close the window.');
