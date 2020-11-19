@@ -17,34 +17,26 @@ let clientId = 'ddb39440cc3043ba97df2dd4fb0fb542',
     redirectUri = 'https://s-tags.herokuapp.com/callback';
 
 let scopes = ['user-read-private', 'user-read-email', 'playlist-modify'];
-let state = 'some-state-of-my-choice';
+let state = 'choice';
 let showDialog = true;
 let responseType = 'token';
 
 // Create the api object with the credentials
 let spotifyApi = new SpotifyWebApi({
     clientId: clientId,
-    // clientSecret: clientSecret,
+    clientSecret: clientSecret,
     redirectUri: redirectUri,
 });
 
 app.get('/login', function(req, res) {
     res.send(spotifyApi.createAuthorizeURL(
-        scopes,
-        state,
-        showDialog,
-        responseType));
+        scopes));
 });
 
 app.get('/callback', (req, res) => {
-    // console.log(req);
-    console.log("response query")
-    console.log(window.location.href)
-    console.log(req.query);
     const error = req.query.error;
     const code = req.query.code;
     const state = req.query.state;
-
 
     if (error) {
         console.error('Callback Error:', error);
@@ -52,32 +44,37 @@ app.get('/callback', (req, res) => {
         return;
     }
 
-
-    console.log("code is");
-    console.log(code)
-    spotifyApi.setAccessToken(code);
-    res.send('Success! You can now close the window.');
-    /*
-
     spotifyApi
         .authorizationCodeGrant(code)
         .then(data => {
             const access_token = data.body['access_token'];
+            const refresh_token = data.body['refresh_token'];
             const expires_in = data.body['expires_in'];
 
             spotifyApi.setAccessToken(access_token);
+            spotifyApi.setRefreshToken(refresh_token);
 
             console.log('access_token:', access_token);
+            console.log('refresh_token:', refresh_token);
 
             console.log(
                 `Sucessfully retreived access token. Expires in ${expires_in} s.`
             );
             res.send('Success! You can now close the window.');
+
+            setInterval(async () => {
+                const data = await spotifyApi.refreshAccessToken();
+                const access_token = data.body['access_token'];
+
+                console.log('The access token has been refreshed!');
+                console.log('access_token:', access_token);
+                spotifyApi.setAccessToken(access_token);
+            }, expires_in / 2 * 1000);
         })
         .catch(error => {
             console.error('Error getting Tokens:', error);
             res.send(`Error getting Tokens: ${error}`);
-        }); */
+        });
 });
 
 app.get('/getPlaylists/:tag', (req, res) => {
