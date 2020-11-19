@@ -36,6 +36,7 @@ app.get('/login', function(req, res) {
 
 app.get('/callback', (req, res) => {
     spotifyApi.resetAccessToken();
+    spotifyApi.resetRefreshToken();
     const error = req.query.error;
     const code = req.query.code;
     const state = req.query.state;
