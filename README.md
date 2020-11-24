@@ -1,7 +1,9 @@
 # s-tags
 Proyecto AMS
 
-Para usar descargar/clonar el proyecto
+Acceso directo: https://s-tags.herokuapp.com/
+
+Para descargar/clonar el proyecto y probar localmente:
 
 Instalar node 
 
